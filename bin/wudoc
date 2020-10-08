@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'wudoc'
+
+base = Wudoc.new(ARGV[0])
+base.go

@@ -1,0 +1,18 @@
+{
+  "tree": {
+    "lib": {
+      "wudoc": {
+        "documenters": {
+          ".": {
+            "tags": ["Documenters"]
+          },
+          "markdown.rb": {
+            ".": {
+              "tags": ["Markdown"]
+            }
+          }
+        }
+      }
+    }
+  }
+}

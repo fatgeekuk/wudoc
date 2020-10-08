@@ -1,0 +1,2 @@
+module Wudoc::Documenters
+end

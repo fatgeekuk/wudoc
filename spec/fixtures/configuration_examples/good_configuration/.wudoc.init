@@ -1,0 +1,23 @@
+{
+  "tags": ["root_one", "root_two"],
+  "tree": {
+    ".": {
+      "tags": ["tree_a"]
+    },
+    "folder_one": {
+      ".": {
+        "tags": ["tree_one_a"]
+      },
+      "folder_one_one": {
+        "config": {
+          "tags": ["tree_one_one_a"]
+        }
+      }
+    },
+    "folder_tre": {
+      ".": {
+        "tags": ["tree_tre_a"]
+      }
+    }
+  }
+}
