@@ -1,0 +1,26 @@
+<% if v.keys.all?{ |q| q.to_sym == q } %>
+  <li>
+    <div class="treeview-element">
+      <i class="far fa-file ic-w mr-1"></i>
+      <a href="<%= v[:path] %>/documentation.html" target="root-window"><%= k %></a>
+    </div>
+  </li>
+<% else %>
+  <li class="treeview-items closed">
+    <span><i class="far fa-folder-open ic-w mx-1"></i><i class="far fa-folder ic-w mx-1"></i><%= k %></span>
+
+    <ul class="nested">
+      <% v.keys.sort.each do |quay| %>
+        <% if !v[quay].keys.all?{ |q| q.to_sym == q } %>
+          <%= render 'index_node', k: quay, v: v[quay] %>
+        <% end %>
+      <% end %>
+      <% v.keys.sort.each do |quay| %>
+        <% if v[quay].keys.all?{ |q| q.to_sym == q } %>
+          <%= render 'index_node', k: quay, v: v[quay] %>
+        <% end %>
+      <% end %>
+    </ul>
+  </li>
+<% end %>
+

@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="<%= doc_base %>/styles.css">
+  </head>
+  <body>
+    <div class="index treeview w-20 border">
+      <% unless tag.nil? %>
+      <h3 class="tag">Tag: <%= tag.gsub('|', ' - ') %></h3>
+      <% end %>
+      <h6 class="pt-3 pl-3">Folders</h6>
+      <hr>
+      <ul class="treeview-animated-list mb-1 pl-3 pb-2">
+        <% tree.keys.sort.each do |k| %>
+          <% if !tree[k].keys.all?{ |q| q.to_sym == q } %>
+            <%= render 'index_node', k: k, v: tree[k] %>
+          <% end %>
+        <% end %>
+
+        <% tree.keys.sort.each do |k| %>
+          <% if tree[k].keys.all?{ |q| q.to_sym == q } %>
+            <%= render 'index_node', k: k, v: tree[k] %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script>
+      $('.treeview-items > span').on('click', function(e){
+        $(e.delegateTarget).parent().toggleClass('closed open');
+        e.stopPropagation();
+      });
+    </script>
+  </body>
+</html>
